@@ -1,0 +1,25 @@
+{
+	"Print to console": {
+		"prefix": "cpp competative",
+		"body": [
+			"#include<bits/stdc++.h>",
+			"   ",
+			"using namespace std;",
+			"",
+			"void solve();",
+			"",
+			"int main(){",
+			"    int t;",
+			"    cin >> t;",
+			"    while(t--){",
+			"        solve();",
+			"    }",
+			"}",
+			"",
+			"void solve(){",
+			"    ",	
+			"}",
+		],
+		"description": "for competative problem solving"
+	}
+}
