@@ -2,21 +2,23 @@
    
 using namespace std;
 
+typedef long long ll;
+
 void solve();
-bool ans(vector<int> &vec);
 
 int main(){
     int t;
     cin >> t;
     while(t--){
-        solve();
+         solve();
+        
     }
 }
 
 void solve(){
     // taking input
     int n;
-    vector<int> vec;
+    vector<ll> vec;
     cin >> n;
     vec.resize(n);
     for (int i = 0; i < n; i++)
@@ -28,19 +30,41 @@ void solve(){
    //  solving problem
   
    sort(vec.begin(),vec.end());
-   vector<int> blue_sum = {vec[0]} , red_sum;
+
+
+
+
+   vector<ll> blue_sum = {vec[0] + vec[1]} , red_sum;
+
+
     
-   for (int i = 1; i < n; i++)
+   for (int i = 2; i < n; i++)
    {
-       blue_sum.push_back(vec[i] + blue_sum[i-1])
+       blue_sum.push_back(vec[i] + blue_sum[i-2]);
    }
 
-   for (int i = 0; i < n; i++)
+    int j = 0;
+   for (int i = n-1; i >= 0; i--)
+   {
+       if(i == n-1){
+           red_sum.push_back(vec[i]);
+
+       }else{
+          red_sum.push_back(vec[i] + red_sum[j-1]);
+       }
+       j++;
+   }
+
+
+   for (int i = 0; i < n-2; i++)
     {
-       cout << vec[i] << " ";
+        if(red_sum[i] > blue_sum[i]){
+            cout << "YES" << endl;
+            return;
+        }
     }
 
-
+   cout << "NO" << endl;
 }
 
 
