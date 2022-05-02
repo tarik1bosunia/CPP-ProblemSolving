@@ -1,5 +1,33 @@
+// #include<iostream>
+   
+   
+// using namespace std;
+    
+// int main(){
+   
+//    int student[] = {2, 3, 6, 8, 4};
+
+//    cout << *(student) << endl;
+   
+   
+//     return 0;
+// }
+
+
+
+
+
+
+
+
+
+
+
 /* 
     Iterators in vector
+    Iterators are used to point at the memory addresses of STL containers(array, vector, map, multimap, set, multiset, stack)
+    They are primarily used in sequence of numbers, characters etc.
+    They reduce the complexity and execution time of program.
 
 begin()   – Returns an iterator pointing to the first element in the vector
 end()     – Returns an iterator pointing to the theoretical element that follows the last element in the vector
@@ -21,26 +49,35 @@ using namespace std;
 	
 int main()
 {
-    // int arr[5];
+//    int x = 10;
+//    int *ptr;
+//    ptr = &x;
+//    cout << *ptr << endl;
 
 
-    // for (int i = 0; i < 5; i++)
-    // {
-    //     /* code */
-    // }
-
-    vector<int> tata(4);
+    vector<int> tata(3);
+    tata[0] = 4;
+    tata[1] = 5;
+    tata[2] = 6;
 
 
 
-    for (int i = 0; i < 4; i++)
-    {
-        cin >> tata[i];
-    }
-     for (int i = 0; i < 4; i++)
-    {
-        cout << tata[i] << " ";
-    }
+   for (auto ptr = tata.begin(); ptr != tata.end(); ptr++){
+       *ptr = *ptr + 10;
+       cout << *ptr << endl;
+   }
+
+//    for (auto ptr = tata.rbegin(); ptr != tata.rend(); ptr++){
+//        cout << *ptr << endl;
+//    }
+
+//    for (auto ptr = tata.cbegin(); ptr != tata.cend(); ptr++){
+
+//        *ptr = *ptr + 10;
+//        cout << *ptr << endl;
+
+
+//    }
     
     
    
@@ -53,6 +90,29 @@ int main()
 
 
 
+
+
+
+// C++ code to demonstrate the working of
+// iterator, begin() and end()
+// #include<iostream>
+// #include<iterator> // for iterators
+// #include<vector> // for vectors
+// using namespace std;
+// int main()
+// {
+// 	vector<int> ar = { 1, 2, 3, 4, 5 };
+	
+// 	// Declaring iterator to a vector
+// 	vector<int>::iterator ptr;
+	
+// 	// Displaying vector elements using begin() and end()
+// 	cout << "The vector elements are : ";
+// 	for (ptr = ar.begin(); ptr < ar.end(); ptr++)
+// 		cout << *ptr << " ";
+	
+// 	return 0;	
+// }
 
 
 
