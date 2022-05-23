@@ -4,13 +4,10 @@
    
    
 using namespace std;
-    
-int main(){
-   array<string,3>arr = { "Esha","Rabitry" ,"Tarik"};
-   int length = arr.size();
-   string *temp = new string[length+1];
 
-   string value = "Rahim";
+string* insertString(string arr[], int length,string value){
+
+   string *temp = new string[length+1];
 
    int i;
 
@@ -25,10 +22,20 @@ int main(){
    for(i = i + 1; i <= length ;i++){
        temp[i] = arr[i-1];
    }
-   for(i = 0; i <= length ;i++){
+  
+    return temp;
+}
+    
+int main(){
+   string arr[] = { "Esha","Rabitry" ,"Tarik"};
+   int length = sizeof(arr)/ sizeof(arr[0]);
+    string value = "Rahim";
+
+   string* temp = insertString(arr,length, value);
+
+   for(int i = 0; i <= length ;i++){
        cout << temp[i] << " ";
    }
-
    
    
    
