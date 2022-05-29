@@ -11,7 +11,7 @@ int main()
     int b[][2] = {
                     10 , 20,
                     30,  40 ,
-                    5 , 6
+                    50 , 60
                 };
    const int row_b = 3, col_b = 2;
 
