@@ -1,120 +1,120 @@
-#include <iostream>
-#include <algorithm>
-using namespace std;
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
 
-struct Node
-{
-    int data;
-    Node *next;
-    Node(int data) : data{data}, next{nullptr} {}
-};
+// struct Node
+// {
+//     int data;
+//     Node *next;
+//     Node(int data) : data{data}, next{nullptr} {}
+// };
 
-struct Node* swap(struct Node* ptr1, struct Node* ptr2)
-{
-	struct Node* tmp = ptr2->next;
-	ptr2->next = ptr1;
-	ptr1->next = tmp;
-	return ptr2;
-}
+// struct Node* swap(struct Node* ptr1, struct Node* ptr2)
+// {
+// 	struct Node* tmp = ptr2->next;
+// 	ptr2->next = ptr1;
+// 	ptr1->next = tmp;
+// 	return ptr2;
+// }
 
-void bubble_sort(Node **head);
+// void bubble_sort(Node **head);
 
-class LinkedList
-{
+// class LinkedList
+// {
 
-public:
-    Node *head;
+// public:
+//     Node *head;
 
-    LinkedList(Node **head)
-    {
-        this->head = *head;
-    }
+//     LinkedList(Node **head)
+//     {
+//         this->head = *head;
+//     }
 
-    Node *insertAtEnd(Node **head, int data)
-    {
-        Node *new_node = new Node(data);
+//     Node *insertAtEnd(Node **head, int data)
+//     {
+//         Node *new_node = new Node(data);
 
-        if (*head == NULL)
-        {
+//         if (*head == NULL)
+//         {
 
-            *head = new_node;
-            return *head;
-        }
+//             *head = new_node;
+//             return *head;
+//         }
 
-        Node *temp = *head;
+//         Node *temp = *head;
 
-        while (temp->next != NULL)
-        {
+//         while (temp->next != NULL)
+//         {
 
-            temp = temp->next;
-        }
+//             temp = temp->next;
+//         }
 
-        temp->next = new_node;
+//         temp->next = new_node;
 
-        return *head;
-    }
+//         return *head;
+//     }
 
-    // Print the linked list
-    void printList(Node **head)
-    {
-        Node *temp = *head;
+//     // Print the linked list
+//     void printList(Node **head)
+//     {
+//         Node *temp = *head;
 
-        while (temp != NULL)
-        {
-            cout << temp->data << " ";
-            temp = temp->next;
-        }
-        cout << endl;
-    }
-};
+//         while (temp != NULL)
+//         {
+//             cout << temp->data << " ";
+//             temp = temp->next;
+//         }
+//         cout << endl;
+//     }
+// };
 
-int main()
-{
-    Node *head = NULL;
-    LinkedList *list = new LinkedList(&head);
+// int main()
+// {
+//     Node *head = NULL;
+//     LinkedList *list = new LinkedList(&head);
 
-    list->insertAtEnd(&head, 5);
-    list->insertAtEnd(&head, 10);
-    list->insertAtEnd(&head, 20);
-    list->insertAtEnd(&head, 15);
-    list->insertAtEnd(&head, 50);
-    list->insertAtEnd(&head, 30);
+//     list->insertAtEnd(&head, 5);
+//     list->insertAtEnd(&head, 10);
+//     list->insertAtEnd(&head, 20);
+//     list->insertAtEnd(&head, 15);
+//     list->insertAtEnd(&head, 50);
+//     list->insertAtEnd(&head, 30);
 
-    bubble_sort(&head);
-    list->printList(&head);
+//     bubble_sort(&head);
+//     list->printList(&head);
 
-    return 0;
-}
+//     return 0;
+// }
 
-// Sort the linked list
-void sort(struct Node **head)
-{
-    Node *current = *head, *index = NULL;
-    int temp;
+// // Sort the linked list
+// void sort(struct Node **head)
+// {
+//     Node *current = *head, *index = NULL;
+//     int temp;
 
-    if (head == NULL)
-    {
-        return;
-    }
+//     if (head == NULL)
+//     {
+//         return;
+//     }
 
-    while (current != NULL)
-    {
-        // index points to the node next to current
-        index = current->next;
+//     while (current != NULL)
+//     {
+//         // index points to the node next to current
+//         index = current->next;
 
-        while (index != NULL)
-        {
-            if (current->data > index->data)
-            {
-                temp = current->data;
-                current->data = index->data;
-                index->data = temp;
-            }
-            index = index->next;
-        }
-        current = current->next;
-    }
-}
+//         while (index != NULL)
+//         {
+//             if (current->data > index->data)
+//             {
+//                 temp = current->data;
+//                 current->data = index->data;
+//                 index->data = temp;
+//             }
+//             index = index->next;
+//         }
+//         current = current->next;
+//     }
+// }
 
 
 
