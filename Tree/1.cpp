@@ -1,37 +1,37 @@
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
 
-struct Node{
-    int data;
-    Node* left;
-    Node* right;
+// struct Node{
+//     int data;
+//     Node* left;
+//     Node* right;
 
-    Node(int data){
-        data = data;
-        left = left;
-    }
-};
+//     Node(int data){
+//         data = data;
+//         left = left;
+//     }
+// };
 
-class Tree{
+// class Tree{
 
-public:
-    Node* root;
+// public:
+//     Node* root;
 
-    Tree(Node* root){
-        this->root = root;
-    }
+//     Tree(Node* root){
+//         this->root = root;
+//     }
 
 
-};
+// };
     
-int main(){
-   Node* root;
+// int main(){
+//    Node* root;
 
-   Tree t1 = new Tree(root);
+//    Tree t1 = new Tree(root);
    
    
-    return 0;
-}
+//     return 0;
+// }
 
 // // C++ program for different tree traversals
 // #include <iostream>
