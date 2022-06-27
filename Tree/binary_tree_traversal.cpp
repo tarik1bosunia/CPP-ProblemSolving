@@ -9,20 +9,29 @@ struct Node{
     Node(int data): data{data}, left{nullptr}, right{nullptr}{}
 };
 
-void print_dfs(Node* root){
-    if(!root) return;
+void pre_order_traversal(Node* root){
+    // base case
+    if(root == NULL) return;
 
+
+    // recursive case
+    
+    // 1. work (visit root)
     cout << root->data << " ";
 
-    print_dfs(root->left);
-    print_dfs(root->right);
+    // 2. visit left
+    pre_order_traversal(root->left);
+
+    
+    // 3. visit right
+    pre_order_traversal(root->right);
     
 }
 
 
     
 int main(){
-   
+   // creating nodes
    Node* root = new Node(1);
    Node* left = new Node(2);
    Node* right = new Node(3);
@@ -33,6 +42,9 @@ int main(){
    Node* left_right_left = new Node(6);
    Node* left_right_right = new Node(7);
 
+// 1 2 4 5 6 7 3
+
+    // connecting nodes
    root->left = left;
    root->right = right;
 
@@ -42,7 +54,9 @@ int main(){
    left_right->left = left_right_left;
    left_right->right = left_right_right;
 
-   print_dfs(root);
+    // pint tree
+   pre_order_traversal(root);
+   cout << "\n" ;
    
     return 0;
 }
