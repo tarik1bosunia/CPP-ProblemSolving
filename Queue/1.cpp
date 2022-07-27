@@ -16,9 +16,10 @@ class Queue {
   }
 
   bool isFull() {
-    if (front == 0 && rear == SIZE - 1) {
-      return true;
-    }
+    if (front == 0 && rear == SIZE - 1) return true;
+    
+    if(rear + 1 == front ) return true;
+    
     return false;
   }
 
@@ -30,15 +31,25 @@ class Queue {
   }
 
   void enQueue(int element) {
+      
+      
     if (isFull()) {
       cout << "Queue is full";
-    } else {
-      if (front == -1) front = 0;
-      rear++;
+      return;
+    }
+
+    
+     rear++;
+     if(rear >= SIZE){
+        rear = 0;
+    }
+
+    if (front == -1) front = 0;
+
       items[rear] = element;
       cout << endl
          << "Inserted " << element << endl;
-    }
+    
   }
 
   int deQueue() {
@@ -63,21 +74,31 @@ class Queue {
 
   void display() {
     /* Function to display elements of Queue */
-    int i;
+    int i = front;
     if (isEmpty()) {
       cout << endl
          << "Empty Queue" << endl;
-    } else {
+         return;
+    }
+     
       cout << endl
          << "Front index-> " << front;
       cout << endl
          << "Items -> ";
-      for (i = front; i <= rear; i++)
+
+      
+      while(i != rear){
         cout << items[i] << "  ";
-      cout << endl
-         << "Rear index-> " << rear << endl;
-    }
+        i++;
+        if(i >= SIZE ){
+          i = 0;
+        }
+      }
+      cout << items[rear] << "  ";
+      cout << endl;
+      cout << "Rear index-> " << rear << endl;
   }
+        
 };
 
 int main() {
@@ -100,8 +121,16 @@ int main() {
 
   //deQueue removes element entered first i.e. 1
   q.deQueue();
+  q.deQueue();
 
   //Now we have just 4 elements
+  q.display();
+
+
+
+  q.enQueue(7);
+  q.enQueue(8);
+
   q.display();
 
   return 0;
