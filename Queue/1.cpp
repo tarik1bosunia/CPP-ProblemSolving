@@ -6,10 +6,10 @@
 using namespace std;
 
 class Queue {
-   private:
-  int items[SIZE], front, rear;
+private:
+    int items[SIZE], front, rear;
 
-   public:
+public:
   Queue() {
     front = -1;
     rear = -1;
@@ -18,28 +18,37 @@ class Queue {
   bool isFull() {
     if (front == 0 && rear == SIZE - 1) return true;
     
+    if(front == rear + 1 ) return true;
+
     if(rear + 1 == front ) return true;
+
     
     return false;
   }
 
   bool isEmpty() {
-    if (front == -1)
-      return true;
-    else
-      return false;
+    if (front == -1) return true;
+   
+    return false;
   }
 
   void enQueue(int element) {
       
       
     if (isFull()) {
+
+      cout << "Queue is full." << " Can not insert!!!" << endl;
+
       cout << "Queue is full";
+
       return;
     }
 
     
      rear++;
+
+     if(rear == SIZE) rear = 0;
+    
      if(rear >= SIZE){
         rear = 0;
     }
@@ -47,6 +56,9 @@ class Queue {
     if (front == -1) front = 0;
 
       items[rear] = element;
+
+      cout << endl;
+      cout << "Inserted " << element << endl;
       cout << endl
          << "Inserted " << element << endl;
     
@@ -55,7 +67,7 @@ class Queue {
   int deQueue() {
     int element;
     if (isEmpty()) {
-      cout << "Queue is empty" << endl;
+      cout << "Queue is empty." << " Can not dequeue!!!" << endl;
       return (-1);
     } else {
       element = items[front];
@@ -65,6 +77,7 @@ class Queue {
       } /* Q has only one element, so we reset the queue after deleting it. */
       else {
         front++;
+        if(front == SIZE) front = 0;
       }
       cout << endl
          << "Deleted -> " << element << endl;
@@ -114,16 +127,24 @@ int main() {
   q.enQueue(4);
   q.enQueue(5);
 
-  // 6th element can't be added to because the queue is full
+  // // 6th element can't be added to because the queue is full
   q.enQueue(6);
 
   q.display();
 
-  //deQueue removes element entered first i.e. 1
+  // //deQueue removes element entered first i.e. 1
+  q.deQueue();
   q.deQueue();
   q.deQueue();
 
-  //Now we have just 4 elements
+  // //Now we have just 4 elements
+  q.display();
+
+
+
+  q.enQueue(7);
+  q.enQueue(8);
+
   q.display();
 
 
