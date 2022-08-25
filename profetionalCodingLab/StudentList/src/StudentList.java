@@ -2,19 +2,38 @@ import java.io.*;
 import java.text.*;
 import java.util.*;
 class StudentList {
+    
+    public static String[] getStudentNames() throws IOException {
+
+            BufferedReader bufferedReader = new BufferedReader(
+                                                new InputStreamReader(
+                                                    new FileInputStream("students.txt")));
+            String NamesLine = bufferedReader.readLine();
+           String[] studentNames = NamesLine.split(", ");
+
+        return studentNames;
+    }
+    
+    
     public static void main(String[] args) {
 
 //		Check arguments
         if(args[0].equals("a")) {
             System.out.println("Loading data ...");
+
+
             try {
-                BufferedReader s = new BufferedReader(
-                                        new InputStreamReader(
-                                            new FileInputStream("students.txt")));
-                String r = s.readLine();
-                String i[] = r.split(", ");
-                for(String j : i) { System.out.println(j); }
-            } catch (Exception e){}
+                String[] studentNames = getStudentNames();
+                for(String studentName : studentNames) {
+                    System.out.println(studentName);
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+            
             System.out.println("Data Loaded.");
         }
         else if(args[0].equals("r"))
