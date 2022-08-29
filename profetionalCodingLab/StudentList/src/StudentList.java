@@ -7,7 +7,7 @@ public class StudentList {
 
             BufferedReader bufferedReader = new BufferedReader(
                                                 new InputStreamReader(
-                                                    new FileInputStream("students.txt")));
+                                                    new FileInputStream(Constants.StudentList)));
             String NamesLine = bufferedReader.readLine();
            String[] studentNames = NamesLine.split(", ");
 
@@ -18,8 +18,8 @@ public class StudentList {
     public static void main(String[] args) {
 
 //		Check arguments
-        if(args[0].equals("a")) {
-            System.out.println("Loading data ...");
+        if(args[0].equals(Constants.ShowAllStudentsName)) {
+            System.out.println(Constants.loadingMessage);
 
 
             try {
@@ -34,11 +34,11 @@ public class StudentList {
 
 
             
-            System.out.println("Data Loaded.");
+            System.out.println(Constants.loadingSuccessMessage);
         }
-        else if(args[0].equals("r"))
+        else if(args[0].equals(Constants.ShowRandomStudentName))
         {
-            System.out.println("Loading data ...");
+            System.out.println(Constants.loadingMessage);
             try {
 
                 String studentNames[] = getStudentNames();
@@ -50,17 +50,16 @@ public class StudentList {
 
                 System.out.println(studentNames[randomIndex]);
             } catch (Exception e){}
-            System.out.println("Data Loaded.");
+            System.out.println(Constants.loadingSuccessMessage);
         }
-        else if(args[0].contains("+")){
-            System.out.println("Loading data ...");
+        else if(args[0].contains(Constants.AddStudentName)){
+            System.out.println(Constants.loadingMessage);
             try {
                 BufferedWriter bufferedWriter = new BufferedWriter(
-                        new FileWriter("students.txt", true));
+                        new FileWriter(Constants.StudentList, true));
 
                 Date date = new Date();
-                String dateFormatString = "dd/mm/yyyy-hh:mm:ss a";
-                DateFormat dateFormat = new SimpleDateFormat(dateFormatString);
+                DateFormat dateFormat = new SimpleDateFormat(Constants.dateFormatString);
                 String formatedDate = dateFormat.format(date);
                 String new_student_name = "tata"; // need to work with input from terminal
 
@@ -70,11 +69,11 @@ public class StudentList {
                 bufferedWriter.close();
             } catch (Exception e){}
 
-            System.out.println("Data Loaded.");
+            System.out.println(Constants.loadingSuccessMessage);
         }
-        else if(args[0].contains("?"))
+        else if(args[0].contains(Constants.StudentSearch))
         {
-            System.out.println("Loading data ...");
+            System.out.println(Constants.loadingMessage);
             try {
                 String findingStudentName = "tata";
 
@@ -82,21 +81,21 @@ public class StudentList {
 
                 for(String student : studentNames){
                     if(student == findingStudentName){
-                        System.out.println("We found the the student name in the list!");
+                        System.out.println(Constants.studentFindingSuccessMessage);
 
                         break; // return
                     }
                 }
 
-                //  System.out.println("We didn't find the student name in the list!");
+               //   System.out.println(Constants.studentFindingFailureMessage);
 
             } catch (Exception e){}
 
-            System.out.println("Data Loaded.");
+            System.out.println(Constants.loadingSuccessMessage);
         }
-        else if(args[0].contains("c"))
+        else if(args[0].contains(Constants.StudentCount))
         {
-            System.out.println("Loading data ...");
+            System.out.println(Constants.loadingMessage);
             try {
 
                 String studentNames[] = getStudentNames();
@@ -113,7 +112,7 @@ public class StudentList {
                 e.printStackTrace();
             }
 
-            System.out.println("Data Loaded.");
+            System.out.println(Constants.loadingSuccessMessage);
         }
     }
 }
