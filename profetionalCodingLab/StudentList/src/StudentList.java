@@ -1,7 +1,7 @@
 import java.io.*;
 import java.text.*;
 import java.util.*;
-class StudentList {
+public class StudentList {
     
     public static String[] getStudentNames() throws IOException {
 
@@ -40,36 +40,34 @@ class StudentList {
         {
             System.out.println("Loading data ...");
             try {
-                BufferedReader s = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("students.txt")));
-                String r = s.readLine();
-                String i[] = r.split(", ");
 
-                int numberOfStudents = i.length;
+                String studentNames[] = getStudentNames();
 
-                Random x = new Random();
-                int y = x.nextInt(numberOfStudents);
+                int numberOfStudents = studentNames.length;
 
-                System.out.println(i[y]);
+                Random random = new Random();
+                int randomIndex = random.nextInt(numberOfStudents);
+
+                System.out.println(studentNames[randomIndex]);
             } catch (Exception e){}
             System.out.println("Data Loaded.");
         }
         else if(args[0].contains("+")){
             System.out.println("Loading data ...");
             try {
-                BufferedWriter s = new BufferedWriter(
+                BufferedWriter bufferedWriter = new BufferedWriter(
                         new FileWriter("students.txt", true));
 
-                Date d = new Date();
-                String df = "dd/mm/yyyy-hh:mm:ss a";
-                DateFormat dateFormat = new SimpleDateFormat(df);
-                String fd= dateFormat.format(d);
-                String new_student_name = "tata";
+                Date date = new Date();
+                String dateFormatString = "dd/mm/yyyy-hh:mm:ss a";
+                DateFormat dateFormat = new SimpleDateFormat(dateFormatString);
+                String formatedDate = dateFormat.format(date);
+                String new_student_name = "tata"; // need to work with input from terminal
 
-                s.write(", " + new_student_name);
-                System.out.println("List last updated on " + fd);
-                s.close();
+                bufferedWriter.write(", " + new_student_name);
+
+                System.out.println("List last updated on " + formatedDate);
+                bufferedWriter.close();
             } catch (Exception e){}
 
             System.out.println("Data Loaded.");
@@ -78,34 +76,33 @@ class StudentList {
         {
             System.out.println("Loading data ...");
             try {
-                BufferedReader s = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("students.txt")));
-                String r = s.readLine();
-                String i[] = r.split(", ");
-                boolean done = false;
-                String t = args[0].substring(1);
-                for(int idx = 0; idx<i.length && !done; idx++) {
-                    if(i[idx].equals(t)) {
-                        System.out.println("We found it!");
-                        done=true;
+                String findingStudentName = "tata";
+
+                String studentNames[] = getStudentNames();
+
+                for(String student : studentNames){
+                    if(student == findingStudentName){
+                        System.out.println("We found the the student name in the list!");
+
+                        break; // return
                     }
                 }
+
+                //  System.out.println("We didn't find the student name in the list!");
+
             } catch (Exception e){}
+
             System.out.println("Data Loaded.");
         }
         else if(args[0].contains("c"))
         {
             System.out.println("Loading data ...");
             try {
-                BufferedReader s = new BufferedReader(
-                        new InputStreamReader(
-                                new FileInputStream("students.txt")));
-                String r = s.readLine();
-                String i[] = r.split(", ");
+
+                String studentNames[] = getStudentNames();
                 int word_count = 0;
 
-                for(String student : i){
+                for(String student : studentNames){
                     String studentName[] = student.split(" ");
 
                     word_count = word_count + studentName.length;
