@@ -61,7 +61,17 @@ public class StudentList {
                 Date date = new Date();
                 DateFormat dateFormat = new SimpleDateFormat(Constants.dateFormatString);
                 String formatedDate = dateFormat.format(date);
-                String new_student_name = "tata"; // need to work with input from terminal
+
+
+
+                String new_student_name = ""; // need to work with input from terminal
+
+                for(String arg : args){
+                    if(arg != args[0]){
+                        new_student_name = new_student_name + " " +  arg;
+                    }
+                }
+                new_student_name = new_student_name.trim();
 
                 bufferedWriter.write(", " + new_student_name);
 
