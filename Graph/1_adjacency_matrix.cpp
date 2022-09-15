@@ -4,15 +4,16 @@
 using namespace std;
 
 class Graph {
-   private:
+  private:
   bool** adjMatrix;
   int numVertices;
 
    public:
   // Initialize the matrix to zero
   Graph(int numVertices) {
+
     this->numVertices = numVertices;
-    adjMatrix = new bool*[numVertices]; // 4 byte * numVertices
+    adjMatrix = new bool* [numVertices]; // 4 byte * numVertices
     for (int i = 0; i < numVertices; i++) {
       adjMatrix[i] = new bool[numVertices];
       for (int j = 0; j < numVertices; j++)
@@ -41,6 +42,11 @@ class Graph {
       cout << "\n";
     }
   }
+  void ans_a(){
+    for (int i = 0; i < numVertices; i++) {
+      for (int j = 0; j < numVertices; j++)  cin >> adjMatrix[i][j];
+    }
+  }
 
   ~Graph() {
     for (int i = 0; i < numVertices; i++)
@@ -48,6 +54,7 @@ class Graph {
     delete[] adjMatrix;
   }
 };
+
 
 int main() {
   Graph g(4);
