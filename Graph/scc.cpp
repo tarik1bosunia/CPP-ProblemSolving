@@ -44,14 +44,17 @@ int main(){
         ar[s].push_back(d); 
         rev[d].push_back(s);
     }
+    // creating stack and print it
     cout << "stk: ";
     dfs1(0);
     cout << "\n";
 
+    // make sure visited array's elements are 0
     for(int i = 0 ; i <= n; i++){
         vis[i] = 0;
     }
 
+    // printing strogly connected component
    for(int i = 1; i <=n; i++){
         int curr = stk.top();
         stk.pop();
