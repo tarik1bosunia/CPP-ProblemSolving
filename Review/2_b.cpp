@@ -1,47 +1,3 @@
-// #include<iostream>
-
-// using namespace std;
-
-// typedef struct Array{
-//     int size = 0;
-//     int *arr;
-//     int lastPos = -1;
-
-//     Array(int size){
-//         size = size;
-//         arr = new int[size];
-//     }
-// } arra;
-
-// void insert(int data, arra* studentRoll){
-
-//     if(studentRoll->lastPos >= studentRoll->size){
-//         cout << "array is already full, so can not insert" << endl;
-//         return;
-//     }
-//     studentRoll->lastPos = studentRoll->lastPos + 1;
-//     studentRoll->arr[studentRoll->lastPos] = data;
-// }
-
-
-// int main(){
-//    arra* studentRoll = new arra(3);
-//    insert(5, studentRoll);
-//    insert(10, studentRoll);
-//    insert(15, studentRoll);
-
-//     cout << studentRoll->size << endl;
-//    for(int i = 0; i <= studentRoll->lastPos; i++){
-//     cout << studentRoll->arr[i] << " ";
-//    }
-//    cout << endl;
-
-
-   
-    
-//     return 0;
-// }
-
 
 #include<iostream>
 
@@ -51,14 +7,13 @@ class arra{
 private:
     int size;
     int lastPos = -1;
-    int *arr;
+    string *arr;
 public:
     arra(int size){
         this->size = size;
-        this->arr = new int[size];
-       
+        this->arr = new string[size];
     }
-    void insert(int data){
+    void insert(string data){
         if(this->lastPos >= this->size - 1){
             cout << "array is already full, so can not insert" << endl;
             return;
@@ -68,7 +23,7 @@ public:
         cout << "inserted successfully" << endl;
     }  
 
-    void remove(int data){
+    void remove(string data){
        
         for(int i = 0 ; i <= this->lastPos; i++){
             if(arr[i] == data){
@@ -85,11 +40,8 @@ public:
         }
         cout << "data not found ... can not remove." << endl;
     }
-    // data = 7
-    // temp = 9
-    // 1 2 3 4 5 7
-    void a_2(int data){
-        int temp;
+    void b_2(string data){
+        string temp;
         for (int i = 0; i <= lastPos; i++){
             if(arr[i] > data){
                 temp = arr[i];
@@ -103,12 +55,8 @@ public:
         arr[lastPos] = temp;
     }
 
-    // pos = 5
-    // data = 55
-    // temp = 55
-    // 5 10 15 20 99 25 30 55
-    void c_2(int data, int pos){
-        int temp = arr[pos-1];
+    void d_2(string data, int pos){
+        string temp = arr[pos-1];
         arr[pos-1] = data;
         data = temp;
         for (int i = pos; i <= lastPos; i++){
@@ -119,6 +67,20 @@ public:
         lastPos = lastPos + 1;
         arr[lastPos] = temp;
         
+    }
+    // ela esha mominur rabitry Karim  pakistan india tarik
+    // ela esha mominur rabitry pakistan india tarik
+    void a_3(string data){
+
+        for(int i = 0 ; i <= lastPos; i++){
+            if(data == arr[i]) {
+                for(int j = i ; j < lastPos; j++)
+                    arr[i] = arr[i+1];
+                lastPos = lastPos -1;
+                return;   
+            }
+        }
+        cout << "the data " << data << " can not be found." << "so can't delete" << endl;
     }
 
     void print(){
@@ -133,25 +95,20 @@ public:
 
 int main(){
     arra* roll = new arra(10);
-    roll->insert(1);
-    roll->insert(2);
-    roll->insert(3);
-    roll->insert(5);
-    roll->insert(7);
-    roll->insert(9);
+    roll->insert("ela");
+    roll->insert("esha");
+    roll->insert("mominur");
+    roll->insert("rabitry");
+    roll->insert("karim");
+    roll->insert("tarik");
+    roll->insert("pakistan");
+    roll->insert("india");
 
-// 2_a
-    // roll->print();
-    // roll->a_2(4);
-    // roll->print();
-
-// 2_c
     roll->print();
-    roll->c_2(99, 5);
+    roll->a_3("karim");
     roll->print();
 
 
-    
     return 0;
 }
 
