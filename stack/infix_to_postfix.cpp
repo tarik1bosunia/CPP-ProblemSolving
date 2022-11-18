@@ -17,12 +17,12 @@ int prec(char c)
 	return -1;
 }
 
-void infixToPostfix(string s){
+void infixToPostfix(string infix){
     stack<char> stk;
     string result;
 
-	for(int i = 0; i< s.length(); i++){
-		char c = s[i];
+	for(int i = 0; i< infix.length(); i++){
+		char c = infix[i];
 
 		if((c >= 'a' && c <= 'z')||(c >= 'A' && c <= 'Z')||(c >= '0' && c <= '9')){
 			result = result + c;
@@ -36,11 +36,11 @@ void infixToPostfix(string s){
 			stk.pop();
 		}	
 		else {
-			while (!stk.empty() && prec(s[i]) <= prec(stk.top())) {
+			while (!stk.empty() &&  prec(c) <= prec(stk.top())) {
 				if (c == '^' && stk.top() == '^')
 					break;
 				else {
-					result += stk.top();
+					result = result + stk.top();
 					stk.pop();
 				}
 			}
@@ -48,7 +48,7 @@ void infixToPostfix(string s){
 		}
 	}
 	while (!stk.empty()) {
-		result += stk.top();
+		result = result + stk.top();
 		stk.pop();
 	}
 	cout << "result: " << result << endl;
@@ -61,7 +61,7 @@ void infixToPostfix(string s){
 
 int main()
 {
-    string exp = "10+b/11*13/10";
-	infixToPostfix(exp);
+    string infix = "10+b/11*13/10^2";
+	infixToPostfix(infix);
 	return 0;
 }

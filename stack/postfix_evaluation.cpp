@@ -13,15 +13,14 @@ struct Stack
 };
 
 // Stack Operations
-struct Stack* createStack( unsigned capacity )
+Stack* createStack( unsigned capacity )
 {
-	struct Stack* stack = (struct Stack*) malloc(sizeof(struct Stack));
-
+	Stack* stack = new Stack();
 	if (!stack) return NULL;
 
 	stack->top = -1;
 	stack->capacity = capacity;
-	stack->array = (int*) malloc(stack->capacity * sizeof(int));
+	stack->array = new int(capacity);
 
 	if (!stack->array) return NULL;
 
@@ -55,7 +54,8 @@ void push(struct Stack* stack, char op)
 int evaluatePostfix(char* exp)
 {
 	// Create a stack of capacity equal to expression size
-	struct Stack* stack = createStack(strlen(exp));
+	Stack* stack = createStack(strlen(exp));
+
 	int i;
 
 	// See if stack was created successfully
@@ -67,7 +67,7 @@ int evaluatePostfix(char* exp)
 		// If the scanned character is an operand (number here),
 		// push it to the stack.
 		if (isdigit(exp[i]))
-			push(stack, exp[i] - '0');
+			push(stack,  exp[i] - '0');
 
 		// If the scanned character is an operator, pop two
 		// elements from stack apply the operator
@@ -77,10 +77,10 @@ int evaluatePostfix(char* exp)
 			int val2 = pop(stack);
 			switch (exp[i])
 			{
-			case '+': push(stack, val2 + val1); break;
-			case '-': push(stack, val2 - val1); break;
-			case '*': push(stack, val2 * val1); break;
-			case '/': push(stack, val2/val1); break;
+				case '+': push(stack, val2 + val1); break;
+				case '-': push(stack, val2 - val1); break;
+				case '*': push(stack, val2 * val1); break;
+				case '/': push(stack, val2/val1); break;
 			}
 		}
 	}
@@ -90,7 +90,8 @@ int evaluatePostfix(char* exp)
 // Driver program to test above functions
 int main()
 {
-	char exp[] = "231*+9-";
+	 char exp[] = "231*+9-";
+	// string exp = "231*+9-";
 	cout<<"postfix evaluation: "<< evaluatePostfix(exp);
 	return 0;
 }
