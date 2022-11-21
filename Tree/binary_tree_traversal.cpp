@@ -16,22 +16,24 @@ void pre_order_traversal(Node* root){
 
     // recursive case
     
+
     // 1. work (visit root)
     cout << root->data << " ";
-
     // 2. visit left
     pre_order_traversal(root->left);
+
 
     
     // 3. visit right
     pre_order_traversal(root->right);
+
+
     
 }
 
 
     
 int main(){
-<<<<<<< HEAD
    
    Node* root = new Node(5);
    Node* left = new Node(3);
@@ -44,13 +46,6 @@ int main(){
    Node* right_right = new Node(9);
 
    Node* left_left_right = new Node(2);
-
-   // creating nodes
-   Node* root = new Node(1);
-   Node* left = new Node(2);
-   Node* right = new Node(3);
-
-
 
 // 1 2 4 5 6 7 3
 

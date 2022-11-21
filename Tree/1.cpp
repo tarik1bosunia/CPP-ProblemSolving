@@ -1,37 +1,91 @@
-// #include<iostream>
-// using namespace std;
+#include <iostream>
+using namespace std;
 
-// struct Node{
-//     int data;
-//     Node* left;
-//     Node* right;
+struct Node
+{
+    int data;
+    Node *left;
+    Node *right;
 
-//     Node(int data){
-//         data = data;
-//         left = left;
-//     }
-// };
+    Node(int data)
+    {
+        data = data;
+        left = nullptr;
+        right = nullptr;
+    }
+};
 
-// class Tree{
-
-// public:
-//     Node* root;
-
-//     Tree(Node* root){
-//         this->root = root;
-//     }
-
-
-// };
+class Tree
+{
     
-// int main(){
-//    Node* root;
 
-//    Tree t1 = new Tree(root);
-   
-   
-//     return 0;
-// }
+public:
+    Node *root;
+    Tree(Node *root)
+    {
+        this->root = root;
+    }
+
+    void insert(int data, Node *root)
+    {
+       
+        Node *new_node = new Node(data);
+
+        // insert at the beggining
+        if (!root)
+        {
+            root = new_node;
+            return;
+        }
+
+        if (data == root->data)
+        {
+            cout << "the data " << data << "was already inserted" << endl;
+            return;
+        }
+        else if (data > root->data)
+        {
+            insert(data, root->right);
+        }
+        else
+        {
+            insert(data, root->left);
+        }
+    }
+    void pre_order_traversal(Node *root)
+    {
+        // base case
+        if (root == NULL)
+            return;
+
+        // recursive case
+
+        // 1. work (visit root)
+        cout << root->data << " ";
+        // 2. visit left
+        pre_order_traversal(root->left);
+
+        // 3. visit right
+        pre_order_traversal(root->right);
+    }
+};
+
+int main()
+{
+    Node *root = NULL;
+
+    Tree *t1 = new Tree(root);
+
+    t1->insert(5, t1->root);
+
+    t1->pre_order_traversal(t1->root);
+
+    return 0;
+}
+
+
+
+
 
 // // C++ program for different tree traversals
 // #include <iostream>
